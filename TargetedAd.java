@@ -32,50 +32,8 @@ public class TargetedAd {
      */
 
 
-    DataCollector dc = new DataCollector();
-    dc.setData("socialMediaPostsSmall.txt", "targetWords.txt");
-
-    java.util.ArrayList<String> targets = new java.util.ArrayList<String>();
-    String tw = dc.getNextTargetWord();
-    while (!tw.equals("NONE")) {
-      targets.add(tw);
-      tw = dc.getNextTargetWord();
-    }
-
-    String users = "";
-    String post = dc.getNextPost();
-    while (!post.equals("NONE")) {
-      String username;
-      int firstSpace = post.indexOf(" ");
-      if (firstSpace != -1) {
-        username = post.substring(0, firstSpace);
-      } else {
-        username = post;
-      }
-
-      // check if post contains any target word
-      boolean matched = false;
-      for (String target : targets) {
-        if (post.indexOf(target) != -1) {
-          matched = true;
-          break;
-        }
-      }
-
-      if (matched) {
-        if (users.length() == 0) {
-          users = username;
-        } else {
-          if ((" " + users + " ").indexOf(" " + username + " ") == -1) {
-            users += " " + username;
-          }
-        }
-      }
-
-      post = dc.getNextPost();
-    }
-
-    dc.prepareAdvertisement("targeted_ad.txt", users, "Buy my pet food!");
+    /* your code here */
+    
      
   }
 
