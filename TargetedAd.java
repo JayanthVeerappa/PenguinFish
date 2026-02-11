@@ -31,10 +31,15 @@ public class TargetedAd {
      *    so you use the socialMediaPosts.txt. You should now have a larger file of users to target.
      */
 
+    
 
     /* your code here */
     
-     
+    DataCollector dataCollector = new DataCollector();
+    dataCollector.setData("socialMediaPostsSmall.txt", "targetWords.txt");
+    String users = "";
+    
+
   }
 
 }
