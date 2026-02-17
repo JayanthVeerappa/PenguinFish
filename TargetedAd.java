@@ -1,7 +1,8 @@
 /*
  * Problem 2.3.1 Sell My Pet Food
  */
-public class TargetedAd {
+public class TargetedAd
+{
 
   public static void main(String[] args)
   {
@@ -39,7 +40,30 @@ public class TargetedAd {
     dataCollector.setData("socialMediaPostsSmall.txt", "targetWords.txt");
     String users = "";
     
+    DataCollector dc = new DataCollector();
+    dc.setData("socialMediaPostsSmall.txt", "targetWords.txt");
 
+    String matchedUsers = "";
+    String post;
+
+    while (!(post = dc.getNextPost()).equals("NONE"))
+      {
+
+        String username = post.split(" ")[0];
+
+        String word;
+        while (!(word = dc.getNextTargetWord()).equals("NONE"))
+          {
+
+            if (post.indexOf(word) != -1)
+              {
+                if (matchedUsers.indexOf(username) == -1)
+                  {
+                    matchedUsers += username + " ";
+                  }
+                  break;
+              }
+          }
+      }
   }
-
 }
