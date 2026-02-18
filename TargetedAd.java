@@ -1,8 +1,7 @@
 /*
  * Problem 2.3.1 Sell My Pet Food
  */
-public class TargetedAd
-{
+public class TargetedAd {
 
   public static void main(String[] args)
   {
@@ -37,25 +36,23 @@ public class TargetedAd
     /* your code here */
     
     DataCollector dataCollector = new DataCollector();
-    dataCollector.setData("socialMediaPostsSmall.txt", "targetWords.txt");
-    String users = "";
     
-    DataCollector dc = new DataCollector();
-    dc.setData("socialMediaPostsSmall.txt", "targetWords.txt");
 
+    dataCollector.setData("socialMediaPosts.txt","targetWords.txt");
+    System.out.println(dataCollector.getNextPost());
+    
     String matchedUsers = "";
     String post;
-
-    while (!(post = dc.getNextPost()).equals("NONE"))
+    
+    while (!((post) = dataCollector.getNextPost()).equals("NONE"))
       {
-
+        String LowerPost = post.toLowerCase();
         String username = post.split(" ")[0];
 
         String word;
-        while (!(word = dc.getNextTargetWord()).equals("NONE"))
+        while (!(word = dataCollector.getNextTargetWord()).equals("NONE"))
           {
-
-            if (post.indexOf(word) != -1)
+            if (LowerPost.indexOf(word) == -1)
               {
                 if (matchedUsers.indexOf(username) == -1)
                   {
@@ -66,10 +63,12 @@ public class TargetedAd
           }
       }
 
-    String advertisement = "Check out our premium pet food - specially formulated for your furry friend!";
-    dc.prepareAdvertisement("targetedUsers.txt", matchedUsers, advertisement);
+    String advertisement = "Check out our premium pet food - specially formulated for your feathery friend!";
+    dataCollector.prepareAdvertisement("targetedUsers.txt", matchedUsers, advertisement);
     
     System.out.println("Advertisement file created: targetedUsers.txt");
     System.out.println("Targeted users: " + matchedUsers);
   }
 }
+  
+
