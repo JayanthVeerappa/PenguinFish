@@ -65,5 +65,11 @@ public class TargetedAd
               }
           }
       }
+
+    String advertisement = "Check out our premium pet food - specially formulated for your furry friend!";
+    dc.prepareAdvertisement("targetedUsers.txt", matchedUsers, advertisement);
+    
+    System.out.println("Advertisement file created: targetedUsers.txt");
+    System.out.println("Targeted users: " + matchedUsers);
   }
 }
