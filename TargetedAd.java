@@ -19,6 +19,9 @@ public class TargetedAd
 
     while (!(post = dc.getNextPost()).equals("NONE"))
       {
+        // Converts post to lowercase 
+        String postLower = post.toLowerCase();
+        
         // Extracts username
         String username = post.split(" ")[0];
 
@@ -26,8 +29,8 @@ public class TargetedAd
         String word;
         while (!(word = dc.getNextTargetWord()).equals("NONE"))
           {
-            // Uses indexOf() to check if target word appears
-            if (post.indexOf(word) != -1)
+            // Uses indexOf() to check if target word appears in lowercase post
+            if (postLower.indexOf(word.toLowerCase()) != -1)
               {
                 // Checks for duplicates
                 if (matchedUsers.indexOf(username) == -1)
